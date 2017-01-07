@@ -29,7 +29,7 @@ Switch item=bathroomMirror
 ```
 It's easy and it looks pretty good:
 
-![alt](/images/IMG_1187.PNG?raw=true)
+![alt](/images/mobile.png?raw=true)
 
 
 ###Schematic:
