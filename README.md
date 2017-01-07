@@ -6,10 +6,34 @@ Schematic is very simple. GPIO0 of ESP8266 is used for driving relay and GPIO2 f
 
 For uploading code to ESP8266 is needed Arduino. In source code is needed to specify WIFI AP parameters, network parameters, OpenHAB item name as well as address where OpenHAB server listens. After module started is in his IP address available HTTP server where some parameters can be redefined. It's useful in case for example changing WIFI password.
 
+For handle lightswitch in OpenHAB you need to modify you sitemap, items and rules file. In items file (/configurations/items/&lt;yourname&gt;.items) is needed to define new item:
+```
+Switch bathroomMirror "Bathroom (mirror light)"
+```
+Now you can define rule in rules file, which sends request to IP address of module whenever the status changes. Instead of 192.168.128.200 is need to specify IP address of your module.
+```
+rule bathroomMirror
+when
+  Item bathroomMirror changed
+then 
+  if (bathroomMirror.state == ON) {
+    sendHttpGetRequest("http://192.168.128.200:80/ON")
+  } else {
+    sendHttpGetRequest("http://192.168.128.200:80/OFF")
+  }
+end 
+```
+Finally can be switch presented in sitemap file:
+```
+Switch item=bathroomMirror
+```
+It's easy and it looks pretty good:
+
+![alt](/images/IMG_1187.PNG?raw=true)
+
 
 ###Schematic:
 ![alt](/eagle/lightswitchx1_sch.png?raw=true)
-
 
 
 ###PCB:
@@ -17,11 +41,13 @@ PCB is realized as single-sided with some wire jumpers. ESP8266 is mounted as al
 
 ![alt](/eagle/lightswitchx1_brd.png?raw=true)
 
-##Some project images:
+###Some project images:
 
-### Module with power supply
+Module with power supply
+
 ![alt](/images/2017-01-02%2021.51.43.jpg?raw=true)
 
-### Already mounted on its place
+Already mounted on its place
+
 ![alt](/images/2017-01-07%2013.30.43.jpg?raw=true)
 ![alt](/images/2017-01-07%2014.20.36.jpg?raw=true)
