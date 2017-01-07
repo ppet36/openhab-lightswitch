@@ -10,7 +10,7 @@ For handle lightswitch in OpenHAB you need to modify you sitemap, items and rule
 ```
 Switch bathroomMirror "Bathroom (mirror light)"
 ```
-Now you can define rule in rules file, which sends request to IP address of module whenever the status changes. Instead of 192.168.128.200 is need to specify IP address of your module.
+Now you can define rule in rules file (/configurations/rules/&lt;yourname&gt;.rules), which sends request to IP address of module whenever the status changes. Instead of 192.168.128.200 is need to specify IP address of your module.
 ```
 rule bathroomMirror
 when
@@ -23,7 +23,7 @@ then
   }
 end 
 ```
-Finally can be switch presented in sitemap file:
+Finally can be switch presented in sitemap file (/configurations/sitemaps/&lt;yourname&gt;.sitemap):
 ```
 Switch item=bathroomMirror
 ```
