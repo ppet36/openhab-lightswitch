@@ -4,7 +4,7 @@ This repository encapsulates Cadsoft's Eagle files and firmware for OpenHAB ligh
 
 Schematic is very simple. GPIO0 of ESP8266 is used for driving relay and GPIO2 for observation of original switch. Light can be turned on / off using original switch or OpenHAB admin screen.
 
-For uploading code to ESP8266 is needed Arduino. In source code is needed to specify WIFI AP parameters, network parameters, OpenHAB item name as well as address where OpenHAB server listens. After module started is in his IP address available HTTP server where some parameters can be redefined. It's useful in case for example changing WIFI password.
+For uploading code to ESP8266 is needed Arduino. In source code is needed to specify WIFI AP parameters, network parameters, OpenHAB item name as well as address where OpenHAB server listens. After module startup is on his IP address available HTTP server where some parameters can be redefined. It's useful in case for example changing WIFI password.
 
 For handle lightswitch in OpenHAB you need to modify you sitemap, items and rules file. In items file (/configurations/items/&lt;yourname&gt;.items) is needed to define new item:
 ```
