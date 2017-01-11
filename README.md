@@ -46,10 +46,6 @@ It's easy and it looks pretty good:
 
 ##PCBs:
 PCB is realized as single-sided with some wire jumpers. ESP8266 is mounted as always in socket to enable firmware update.
-### Single relay under switch
-![alt](/eagle/lightswitchx1_brd.png?raw=true)
-### Single relay into wiring box
-
 
 ###Some project images:
 
