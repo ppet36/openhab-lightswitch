@@ -1,12 +1,16 @@
 
 /**
- * One light ON/OFF driver for OpenHAB.
+ * One light ON/OFF driver.
 */
 #include <EEPROM.h>
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
 #include <WiFiClient.h>
 #include <ESP8266WebServer.h>
+
+// Variant relay or triac
+#define TRIAC
+//#define RELAY
 
 // PIN with relay
 #define LIGHT_PIN 0
@@ -18,20 +22,20 @@
 #define DEFAULT_OPENHAB_PORT 9000
 
 // Name of OpenHAB item (can be changed later on config page)
-#define DEFAULT_OPENHAB_ITEM "bathroomMirror"
+#define DEFAULT_OPENHAB_ITEM "bathroomChandelier"
 
 // Update time for item state in seconds;
 // switch periodically sends its state to OpenHAB
 #define ITEM_UPDATE_TIME 60L
 
 // Local network definition; must have static IP address
-#define LOCAL_IP IPAddress(192, 168, 128, 200)
+#define LOCAL_IP IPAddress(192, 168, 128, 202)
 #define GATEWAY IPAddress(192, 168, 128, 1)
 #define SUBNETMASK IPAddress(255, 255, 255, 0)
 
 // Local Wifi AP for connect
-#define DEFAULT_WIFI_AP "******"
-#define DEFAULT_WIFI_PASSWORD "******************"
+#define DEFAULT_WIFI_AP "*****"
+#define DEFAULT_WIFI_PASSWORD "******"
 
 // Error count for reconnect WIFI
 #define ERR_COUNT_FOR_RECONNECT 30
@@ -43,6 +47,18 @@
 
 // Magic for detecting empty (unconfigured) EEPROM
 #define MAGIC 0xAA
+
+
+#ifdef TRIAC
+  #define ON_VAL LOW
+  #define OFF_VAL HIGH
+#elif RELAY
+  #define ON_VAL HIGH
+  #define OFF_VAL LOW
+#else
+  #error "Variant is not defined!"
+#endif
+
 
 // Configuration server
 ESP8266WebServer *server = (ESP8266WebServer *) NULL;
@@ -59,7 +75,7 @@ bool lightState = false;
 
 
 /**
- * Structure saved to EEPROM.
+ * Struktura ukladana do EEPROM.
 */
 struct OhConfiguration {
   int magic;
@@ -84,7 +100,7 @@ void setup() {
   // light is initialy OFF
   pinMode (LIGHT_PIN, OUTPUT);
   pinMode (SWITCH_PIN, INPUT);
-  digitalWrite (LIGHT_PIN, LOW);
+  digitalWrite (LIGHT_PIN, OFF_VAL);
 
   // Read config
   EEPROM.begin (sizeof (OhConfiguration));
@@ -169,7 +185,7 @@ void createServer() {
 */
 void lightOn() {
   yield();
-  digitalWrite (LIGHT_PIN, HIGH);
+  digitalWrite (LIGHT_PIN, ON_VAL);
   lightState = true;
   Serial.println ("Light is ON");
 }
@@ -179,7 +195,7 @@ void lightOn() {
 */
 void lightOff() {
   yield();
-  digitalWrite (LIGHT_PIN, LOW);
+  digitalWrite (LIGHT_PIN, OFF_VAL);
   lightState = false;
   Serial.println ("Light is OFF");
 }
