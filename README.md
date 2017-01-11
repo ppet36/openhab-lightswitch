@@ -4,7 +4,7 @@ This repository encapsulates Cadsoft's Eagle files and firmware for OpenHAB ligh
 
 For powering module can be used any 5V/ >=800mA power supply such as USB charger for phone.
 
-Schematic is very simple. GPIO0 of ESP8266 is used for driving relay and GPIO2 for observation of original switch. Light can be turned on / off using original switch or OpenHAB admin screen.
+Schematics is very simple. For single variant GPIO0 of ESP8266 is used for driving relay/triac and GPIO2 for observation of original switch. Light can be turned on / off using original switch or OpenHAB admin screen. For double variant is used I/O expander PCA9536 which two pins used for driving relays/triacs and other two for switches observation.
 
 For uploading code to ESP8266 is needed Arduino. In source code is needed to specify WIFI AP parameters, network parameters, OpenHAB item name as well as address where OpenHAB server listens. After module startup is on his IP address available HTTP server where some parameters can be redefined. It's useful in case for example changing WIFI password.
 
@@ -39,13 +39,17 @@ It's easy and it looks pretty good:
 ![alt](/eagle/lightswitchx1_sch.png?raw=true)
 ### Double relay
 ![alt](/eagle/lightswitchx2_sch.png?raw=true)
+### Single triac
+![alt](/eagle/lightswitchx1_triac_sch.png?raw=true)
+### Double triac
+![alt](/eagle/lightswitchx2_triac_sch.png?raw=true)
 
-
-
-###PCB:
+##PCBs:
 PCB is realized as single-sided with some wire jumpers. ESP8266 is mounted as always in socket to enable firmware update.
-
+### Single relay under switch
 ![alt](/eagle/lightswitchx1_brd.png?raw=true)
+### Single relay into wiring box
+
 
 ###Some project images:
 
