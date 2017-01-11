@@ -1,6 +1,8 @@
 # OpenHAB light switch
 
-This repository encapsulates Cadsoft's Eagle files and firmware for OpenHAB light switch using ESP8266-01 module. For powering module can be used any 5V/ >=800mA power supply such as USB charger for phone.
+This repository encapsulates Cadsoft's Eagle files and firmware for OpenHAB light switch using ESP8266-01 module. There is single variant under switch with relay and single/double variants with relays/triacs for round wiring boxes.
+
+For powering module can be used any 5V/ >=800mA power supply such as USB charger for phone.
 
 Schematic is very simple. GPIO0 of ESP8266 is used for driving relay and GPIO2 for observation of original switch. Light can be turned on / off using original switch or OpenHAB admin screen.
 
@@ -32,8 +34,12 @@ It's easy and it looks pretty good:
 ![alt](/images/mobile.png?raw=true)
 
 
-###Schematic:
+##Schematics:
+### Single relay
 ![alt](/eagle/lightswitchx1_sch.png?raw=true)
+### Double relay
+![alt](/eagle/lightswitchx2_sch.png?raw=true)
+
 
 
 ###PCB:
