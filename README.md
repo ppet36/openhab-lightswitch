@@ -45,7 +45,8 @@ It's easy and it looks pretty good:
 ![alt](/eagle/lightswitchx2_triac_sch.png?raw=true)
 
 ##PCBs:
-PCB is realized as single-sided with some wire jumpers. ESP8266 is mounted as always in socket to enable firmware update.
+PCB is realized as single-sided with some wire jumpers. ESP8266 is mounted as always in socket to enable firmware update. Depending of interferences you may need solder some 100n capacitors directly to ICs pads from bottom side of PCB.
+
 ![alt](/eagle/lightswitchx1_brd.png?raw=true)![alt](/eagle/lightswitchx2_brd.png?raw=true)
 ![alt](/eagle/lightswitchx1_triac_brd.png?raw=true)![alt](/eagle/lightswitchx2_triac_brd.png?raw=true)
 
