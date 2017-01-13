@@ -148,14 +148,14 @@
 <packages>
 <package name="ESP01">
 <description>ESP8266 Module 01</description>
-<pad name="GND" x="-3.825" y="-5.6375" drill="0.8" shape="square" rot="R270"/>
-<pad name="RX" x="3.795" y="-5.6375" drill="0.8" shape="square" rot="R270"/>
-<pad name="GPIO2" x="-1.285" y="-5.6375" drill="0.8" rot="R270"/>
-<pad name="GPIO0" x="1.255" y="-5.6375" drill="0.8" rot="R270"/>
-<pad name="RST" x="1.255" y="-8.1775" drill="0.8" rot="R270"/>
-<pad name="CH_PD" x="-1.285" y="-8.1775" drill="0.8" rot="R270"/>
-<pad name="TX" x="-3.825" y="-8.1775" drill="0.8" rot="R270"/>
-<pad name="VCC" x="3.795" y="-8.1775" drill="0.8" rot="R270"/>
+<pad name="GND" x="-3.825" y="-5.6375" drill="0.8" diameter="1.6764" shape="square" rot="R270"/>
+<pad name="RX" x="3.795" y="-5.6375" drill="0.8" diameter="1.6764" shape="square" rot="R270"/>
+<pad name="GPIO2" x="-1.285" y="-5.6375" drill="0.8" diameter="1.6764" rot="R270"/>
+<pad name="GPIO0" x="1.255" y="-5.6375" drill="0.8" diameter="1.6764" rot="R270"/>
+<pad name="RST" x="1.255" y="-8.1775" drill="0.8" diameter="1.6764" rot="R270"/>
+<pad name="CH_PD" x="-1.285" y="-8.1775" drill="0.8" diameter="1.6764" rot="R270"/>
+<pad name="TX" x="-3.825" y="-8.1775" drill="0.8" diameter="1.6764" rot="R270"/>
+<pad name="VCC" x="3.795" y="-8.1775" drill="0.8" diameter="1.6764" rot="R270"/>
 <wire x1="-7" y1="15" x2="-7" y2="7.38" width="0.127" layer="21"/>
 <wire x1="-7" y1="7.38" x2="-7" y2="-9.765" width="0.127" layer="21"/>
 <wire x1="-7" y1="-9.765" x2="7.2875" y2="-9.765" width="0.127" layer="21"/>
@@ -12937,8 +12937,10 @@ Source: http://www.nxp.com/acrobat_download/datasheets/BT136_SERIES_E_2.pdf</des
 <part name="OK1" library="optocoupler" deviceset="MOC30*" device="" technology="41M"/>
 <part name="T1" library="triac" deviceset="BT136" device=""/>
 <part name="R5" library="rcl" deviceset="R-EU_" device="0207/7" value="220"/>
-<part name="R2" library="rcl" deviceset="R-EU_" device="0207/10" value="10K"/>
+<part name="R2" library="rcl" deviceset="R-EU_" device="0207/10" value="4K7"/>
 <part name="R1" library="rcl" deviceset="R-EU_" device="0207/7" value="330"/>
+<part name="C4" library="rcl" deviceset="C-EU" device="025-030X050" value="100n"/>
+<part name="C5" library="rcl" deviceset="CPOL-EU" device="E2-5" value="330u"/>
 </parts>
 <sheets>
 <sheet>
@@ -12948,11 +12950,11 @@ Source: http://www.nxp.com/acrobat_download/datasheets/BT136_SERIES_E_2.pdf</des
 <instance part="U$1" gate="G$1" x="83.82" y="45.72" rot="R180"/>
 <instance part="C1" gate="G$1" x="45.72" y="33.02"/>
 <instance part="C2" gate="G$1" x="53.34" y="33.02"/>
-<instance part="JP1" gate="G$1" x="-2.54" y="45.72" rot="R180"/>
-<instance part="JP2" gate="G$1" x="-2.54" y="20.32" rot="R180"/>
-<instance part="C3" gate="G$1" x="7.62" y="33.02"/>
+<instance part="JP1" gate="G$1" x="-7.62" y="45.72" rot="R180"/>
+<instance part="JP2" gate="G$1" x="-7.62" y="20.32" rot="R180"/>
+<instance part="C3" gate="G$1" x="2.54" y="33.02"/>
 <instance part="JP3" gate="G$1" x="101.6" y="7.62" rot="R270"/>
-<instance part="JP4" gate="G$1" x="111.76" y="7.62" rot="R270"/>
+<instance part="JP4" gate="G$1" x="116.84" y="7.62" rot="R270"/>
 <instance part="R3" gate="G$1" x="58.42" y="53.34" rot="R90"/>
 <instance part="R4" gate="G$1" x="66.04" y="53.34" rot="R90"/>
 <instance part="U$4" gate="G$1" x="182.88" y="17.78"/>
@@ -12963,6 +12965,8 @@ Source: http://www.nxp.com/acrobat_download/datasheets/BT136_SERIES_E_2.pdf</des
 <instance part="R5" gate="G$1" x="119.38" y="43.18"/>
 <instance part="R2" gate="G$1" x="106.68" y="50.8" rot="R90"/>
 <instance part="R1" gate="G$1" x="160.02" y="50.8" rot="R90"/>
+<instance part="C4" gate="G$1" x="109.22" y="27.94" rot="R90"/>
+<instance part="C5" gate="G$1" x="12.7" y="33.02"/>
 </instances>
 <busses>
 </busses>
@@ -12970,12 +12974,13 @@ Source: http://www.nxp.com/acrobat_download/datasheets/BT136_SERIES_E_2.pdf</des
 <net name="N$2" class="0">
 <segment>
 <pinref part="JP2" gate="G$1" pin="1"/>
-<wire x1="0" y1="20.32" x2="7.62" y2="20.32" width="0.1524" layer="91"/>
+<wire x1="-5.08" y1="20.32" x2="2.54" y2="20.32" width="0.1524" layer="91"/>
 <pinref part="C3" gate="G$1" pin="2"/>
-<wire x1="7.62" y1="27.94" x2="7.62" y2="20.32" width="0.1524" layer="91"/>
-<junction x="7.62" y="20.32"/>
+<wire x1="2.54" y1="27.94" x2="2.54" y2="20.32" width="0.1524" layer="91"/>
+<junction x="2.54" y="20.32"/>
 <pinref part="C1" gate="G$1" pin="2"/>
-<wire x1="7.62" y1="20.32" x2="45.72" y2="20.32" width="0.1524" layer="91"/>
+<wire x1="2.54" y1="20.32" x2="12.7" y2="20.32" width="0.1524" layer="91"/>
+<wire x1="12.7" y1="20.32" x2="45.72" y2="20.32" width="0.1524" layer="91"/>
 <wire x1="45.72" y1="20.32" x2="45.72" y2="27.94" width="0.1524" layer="91"/>
 <pinref part="C2" gate="G$1" pin="-"/>
 <wire x1="40.64" y1="20.32" x2="45.72" y2="20.32" width="0.1524" layer="91"/>
@@ -12986,13 +12991,20 @@ Source: http://www.nxp.com/acrobat_download/datasheets/BT136_SERIES_E_2.pdf</des
 <wire x1="101.6" y1="20.32" x2="101.6" y2="10.16" width="0.1524" layer="91"/>
 <junction x="53.34" y="20.32"/>
 <pinref part="U$1" gate="G$1" pin="GND"/>
-<wire x1="101.6" y1="38.1" x2="101.6" y2="20.32" width="0.1524" layer="91"/>
+<wire x1="101.6" y1="38.1" x2="101.6" y2="27.94" width="0.1524" layer="91"/>
 <junction x="101.6" y="20.32"/>
 <pinref part="JP3" gate="G$1" pin="1"/>
 <pinref part="Q1" gate="G$1" pin="GND"/>
+<wire x1="101.6" y1="27.94" x2="101.6" y2="20.32" width="0.1524" layer="91"/>
 <wire x1="40.64" y1="40.64" x2="40.64" y2="20.32" width="0.1524" layer="91"/>
 <junction x="40.64" y="20.32"/>
 <wire x1="101.6" y1="20.32" x2="134.62" y2="20.32" width="0.1524" layer="91"/>
+<pinref part="C4" gate="G$1" pin="1"/>
+<wire x1="106.68" y1="27.94" x2="101.6" y2="27.94" width="0.1524" layer="91"/>
+<junction x="101.6" y="27.94"/>
+<pinref part="C5" gate="G$1" pin="-"/>
+<wire x1="12.7" y1="27.94" x2="12.7" y2="20.32" width="0.1524" layer="91"/>
+<junction x="12.7" y="20.32"/>
 </segment>
 </net>
 <net name="N$3" class="0">
@@ -13030,17 +13042,20 @@ Source: http://www.nxp.com/acrobat_download/datasheets/BT136_SERIES_E_2.pdf</des
 <net name="N$5" class="0">
 <segment>
 <pinref part="JP1" gate="G$1" pin="1"/>
-<wire x1="0" y1="45.72" x2="7.62" y2="45.72" width="0.1524" layer="91"/>
+<wire x1="-5.08" y1="45.72" x2="2.54" y2="45.72" width="0.1524" layer="91"/>
 <pinref part="C3" gate="G$1" pin="1"/>
-<wire x1="7.62" y1="35.56" x2="7.62" y2="45.72" width="0.1524" layer="91"/>
-<junction x="7.62" y="45.72"/>
+<wire x1="2.54" y1="35.56" x2="2.54" y2="45.72" width="0.1524" layer="91"/>
+<junction x="2.54" y="45.72"/>
 <pinref part="Q1" gate="G$1" pin="VIN"/>
-<wire x1="7.62" y1="45.72" x2="12.7" y2="45.72" width="0.1524" layer="91"/>
+<wire x1="2.54" y1="45.72" x2="12.7" y2="45.72" width="0.1524" layer="91"/>
 <pinref part="Q1" gate="G$1" pin="VDIS"/>
 <wire x1="12.7" y1="45.72" x2="15.24" y2="45.72" width="0.1524" layer="91"/>
 <wire x1="15.24" y1="43.18" x2="12.7" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="12.7" y1="43.18" x2="12.7" y2="45.72" width="0.1524" layer="91"/>
 <junction x="12.7" y="45.72"/>
+<pinref part="C5" gate="G$1" pin="+"/>
+<wire x1="12.7" y1="35.56" x2="12.7" y2="43.18" width="0.1524" layer="91"/>
+<junction x="12.7" y="43.18"/>
 </segment>
 </net>
 <net name="N$6" class="0">
@@ -13054,12 +13069,16 @@ Source: http://www.nxp.com/acrobat_download/datasheets/BT136_SERIES_E_2.pdf</des
 <segment>
 <pinref part="U$1" gate="G$1" pin="GPIO2"/>
 <wire x1="101.6" y1="40.64" x2="106.68" y2="40.64" width="0.1524" layer="91"/>
-<wire x1="106.68" y1="40.64" x2="111.76" y2="40.64" width="0.1524" layer="91"/>
-<wire x1="111.76" y1="40.64" x2="111.76" y2="10.16" width="0.1524" layer="91"/>
+<wire x1="106.68" y1="40.64" x2="116.84" y2="40.64" width="0.1524" layer="91"/>
+<wire x1="116.84" y1="40.64" x2="116.84" y2="27.94" width="0.1524" layer="91"/>
 <pinref part="JP4" gate="G$1" pin="1"/>
 <pinref part="R2" gate="G$1" pin="1"/>
+<wire x1="116.84" y1="27.94" x2="116.84" y2="10.16" width="0.1524" layer="91"/>
 <wire x1="106.68" y1="45.72" x2="106.68" y2="40.64" width="0.1524" layer="91"/>
 <junction x="106.68" y="40.64"/>
+<pinref part="C4" gate="G$1" pin="2"/>
+<wire x1="114.3" y1="27.94" x2="116.84" y2="27.94" width="0.1524" layer="91"/>
+<junction x="116.84" y="27.94"/>
 </segment>
 </net>
 <net name="N$8" class="0">
