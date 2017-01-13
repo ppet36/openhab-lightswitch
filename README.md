@@ -60,3 +60,22 @@ Already mounted on its place
 
 ![alt](/images/2017-01-07%2013.30.43.jpg?raw=true)
 ![alt](/images/2017-01-07%2014.20.36.jpg?raw=true)
+
+PCA9536 breadboard modules
+
+![alt](/images/2017-01-10%2020.06.06.jpg?raw=true)
+
+Double relay version
+
+![alt](/images/2017-01-08%2017.45.16.jpg?raw=true)
+
+Single triac version
+
+![alt](/images/2017-01-11%2020.01.56.jpg?raw=true)
+
+Double triac version
+
+![alt](/images/2017-01-12%2021.32.53.jpg?raw=true)
+
+
+
