@@ -8,7 +8,7 @@
 #include <WiFiClient.h>
 #include <ESP8266WebServer.h>
 
-// Variant relay or triac
+// Variant relay or triac; ON/OFF levels for triac is inverted
 #define TRIAC
 //#define RELAY
 
@@ -35,7 +35,7 @@
 
 // Local Wifi AP for connect
 #define DEFAULT_WIFI_AP "*****"
-#define DEFAULT_WIFI_PASSWORD "******"
+#define DEFAULT_WIFI_PASSWORD "*******"
 
 // Error count for reconnect WIFI
 #define ERR_COUNT_FOR_RECONNECT 30
@@ -383,12 +383,17 @@ void loop() {
       server->handleClient();
     }
 
+    // read switch pin; delays eliminates interference on wires
     bool switchState = digitalRead (SWITCH_PIN);
     if (switchState != lastSwitchState) {
-      toggleState();
-      lastInteractionTime = millis();
-      delay (500);
-      lastSwitchState = digitalRead (SWITCH_PIN);
+      delay (150);
+      bool newSwitchState = digitalRead (SWITCH_PIN);
+      if (switchState == newSwitchState) {
+        toggleState();
+        lastInteractionTime = millis();
+        delay (500);
+        lastSwitchState = digitalRead (SWITCH_PIN);
+      }
     }
     
     if (millis() - lastInteractionTime > ITEM_UPDATE_TIME * 1000L) {
