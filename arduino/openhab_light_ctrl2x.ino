@@ -32,8 +32,8 @@
 #define SUBNETMASK IPAddress(255, 255, 255, 0)
 
 // Local Wifi AP for connect
-#define DEFAULT_WIFI_AP "****"
-#define DEFAULT_WIFI_PASSWORD "****"
+#define DEFAULT_WIFI_AP "******"
+#define DEFAULT_WIFI_PASSWORD "********"
 
 // Error count for reconnect WIFI
 #define ERR_COUNT_FOR_RECONNECT 30
@@ -93,6 +93,7 @@ void setup() {
 
   pcaSetup();
 
+
   // Read config
   EEPROM.begin (sizeof (OhConfiguration));
   EEPROM.get (0, config);
@@ -117,7 +118,6 @@ void setup() {
  * Configure PCA.
 */
 void pcaSetup() {
-  Serial.print ("PCA9536 reset ");
   pca.reset();
   pca.setMode (IO0, IO_INPUT);
   pca.setMode (IO1, IO_INPUT);
@@ -130,7 +130,6 @@ void pcaSetup() {
     Serial.println("Not Found");
     delay (100);
   }
-  Serial.println("OK");
 }
 
 /**
@@ -215,7 +214,8 @@ void lightOff (byte index) {
   lightState [index] = false;
   pca.setState (index == 0 ? IO2 : IO3, IO_LOW);
 
-  if (!lightState[0] && !lightState[1]) {
+  if (!lightState [0] && !lightState [1]) {
+    delay (250);
     pcaSetup();
   }
 }
@@ -452,16 +452,19 @@ void loop() {
       server->handleClient();
     }
 
-
     bool doUpdate = (millis() - lastInteractionTime > ITEM_UPDATE_TIME * 1000L);
     
     for (lightIndex = 0; lightIndex < 2; lightIndex++) {
       bool switchState = getSwitchState (lightIndex);
       if (switchState != lastSwitchStates[lightIndex]) {
-        toggleState (lightIndex);
-        lastInteractionTime = millis();
-        delay (200);
-        lastSwitchStates[lightIndex] = getSwitchState (lightIndex);
+        delay (150);
+        bool newSwitchState = getSwitchState (lightIndex);
+        if (switchState == newSwitchState) {
+          toggleState (lightIndex);
+          lastInteractionTime = millis();
+          delay (250);
+          lastSwitchStates[lightIndex] = getSwitchState (lightIndex);
+        }
       }
       
       if (doUpdate) {
