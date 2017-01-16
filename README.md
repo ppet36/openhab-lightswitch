@@ -2,7 +2,7 @@
 
 This repository encapsulates Cadsoft's Eagle files and firmware for OpenHAB light switch using ESP8266-01 module. There is single variant under switch with relay and single/double variants with relays/triacs for round wiring boxes.
 
-For powering module can be used any 5V/ >=800mA power supply such as USB charger for phone.
+For powering module can be used any 5V/ >=800mA power supply such as USB charger for phone. Power consumption with AKYGA CCABKEYAKY-07310 power supply is about 1.2W.
 
 Schematics is very simple. For single variant GPIO0 of ESP8266 is used for driving relay/triac and GPIO2 for observation of original switch. Light can be turned on / off using original switch or OpenHAB admin screen. For double variant is used I/O expander PCA9536 which two pins used for driving relays/triacs and other two for switches observation.
 
